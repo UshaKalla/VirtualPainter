@@ -38,4 +38,43 @@ while True:
                     (255, 255, 255), 2) 
         
     rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-    
+    results = hands.process(rgb)
+
+    if results.multi_hand_landmarks:
+        for hand_landmarks in results.multi_hand_landmarks:
+            lm_list = []
+            for id, lm in enumerate(hand_landmarks.landmark):
+                lm_list.append((int(lm.x * w), int(lm.y * h)))
+
+            index_x, index_y = lm_list[8]
+
+            if index_y < 100:
+                color_index = min(index_x // 100, len(palette) - 1)
+                prev_x, prev_y = 0, 0
+
+            else:
+                if prev_x == 0 and prev_y == 0:
+                    prev_x, prev_y = index_x, index_y
+
+                if 0 <= color_index < len(palette):
+                    if color_index == len(palette) - 1:
+                        cv2.line(canvas, (prev_x, prev_y), (index_x, index_y), (0, 0, 0), eraser_thickness)
+                    else:
+                        cv2.line(canvas, (prev_x, prev_y), (index_x, index_y), palette[color_index], brush_thickness)
+                prev_x, prev_y = index_x, index_y
+            mp_drawing.draw_landmarks(frame, hand_landmarks, mp_hands.HAND_CONNECTIONS)
+        
+    else:
+        prev_x, prev_y = 0, 0
+    combined = np.hstack((frame, canvas))
+    cv2.imshow("Virtual Painter", combined)
+    key = cv2.waitKey(1) & 0xFF
+    if key == ord('q'):
+        break
+    elif key == ord('s'):
+        save_path = os.path.join(os.getcwd(), f'painting_{save_counter}.png')
+        cv2.imwrite(save_path, canvas)
+        print(f"Saved painting as {save_path}")
+        save_counter += 1
+cap.release()
+cv2.destroyAllWindows()
