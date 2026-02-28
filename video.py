@@ -27,7 +27,7 @@ while True:
     frame = cv2.flip(frame, 1)
     h, w, c = frame.shape
     if canvas is None:
-        canvas = np.zeros(h, w, 3, dtype=np.uint8)
+        canvas = np.zeros((h, w, 3), dtype=np.uint8)
 
     for i, color in enumerate(palette):
         x_start = i * 100
