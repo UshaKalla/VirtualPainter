@@ -1,2 +1,2 @@
 # VirtualPainter
-Computer Vision Driven App that paints with your finger. 
+This is a computer vision driven application that leverages a camera and a person's finger. 
