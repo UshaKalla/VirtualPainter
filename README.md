@@ -1,28 +1,36 @@
-This application is a Virtual Painter that allows users to draw on a digital canvas using hand gestures detected through a webcam. It uses OpenCV for video processing, MediaPipe Hands for real-time hand tracking, and NumPy for managing the drawing canvas.
+# Virtual Painter: Air-Drawing with Computer Vision
 
-Description
+> **Note:** This project is an interactive computer vision application that lets users draw on a digital canvas in real time using hand gestures captured through a webcam.
 
-The Virtual Painter captures live video from the webcam and tracks the user's hand movements using MediaPipe's hand landmark detection. The position of the index fingertip acts as a virtual brush, enabling users to draw naturally in the air without touching the screen.
+---
 
-A color palette is displayed at the top of the video feed, allowing users to select different drawing colors (red, green, blue, yellow) or switch to an eraser by moving their index finger over the desired color block. Once a color is selected, moving the index finger across the screen creates smooth lines on a separate drawing canvas.
+### Project Summary
+* **Inspiration:** Created to explore human-computer interaction (HCI) by combining computer vision and machine learning for a touchless drawing experience.
+* **Core Purpose:** To track hand movements via webcam, enabling users to draw, select colors, erase, and save artwork entirely through hand gestures without touching a screen or mouse.
 
-The application overlays the detected hand landmarks on the live video for visual feedback and displays the webcam feed alongside the drawing canvas in a single window. Users can:
+---
 
-Draw freely using hand movements.
-Switch between multiple colors.
-Erase parts of the drawing using the eraser tool.
-Save the completed artwork as a PNG image by pressing the 's' key.
-Exit the application by pressing the 'q' key.
-Key Features
-Real-time hand tracking using MediaPipe Hands.
-Contactless drawing with the index finger.
-Interactive color palette for quick color selection.
-Eraser mode for correcting drawings.
-Live visualization of hand landmarks.
-Save drawings as image files.
-Side-by-side display of webcam feed and drawing canvas.
-Technologies Used
-Python
-OpenCV – Webcam capture and image processing.
-MediaPipe – Hand detection and landmark tracking.
-NumPy – Canvas creation and manipulation.
+### Key Features & Components
+
+* **Real-Time Hand Tracking:** Powered by **MediaPipe Hands** to detect hand landmarks and track movement accurately.
+* **Contactless Index Finger Brush:** Uses the position of the index fingertip as a virtual paintbrush.
+* **Interactive Color Palette:** A top-screen menu allows users to switch between colors (red, green, blue, yellow) or select an eraser simply by moving their finger over the desired block.
+* **Side-by-Side Visualization:** Displays the live webcam feed (with landmark overlays) alongside the separate drawing canvas in a single window.
+* **File Management:** Save completed artwork instantly as a PNG image by pressing the `s` key.
+* **Quick Exit:** Close the application at any time by pressing the `q` key.
+
+---
+
+### Technologies Used
+* **Python** – Core programming language.
+* **OpenCV** – Webcam video capture and image processing.
+* **MediaPipe** – Real-time hand landmark detection and tracking.
+* **NumPy** – Digital canvas creation, manipulation, and layer blending.
+
+---
+
+### Controls & Shortcuts
+* **Draw:** Move your index finger across the screen.
+* **Select Color / Eraser:** Hover your index finger over the corresponding block in the top color palette.
+* **Save Artwork:** Press `s` on your keyboard.
+* **Exit Application:** Press `q` on your keyboard.
